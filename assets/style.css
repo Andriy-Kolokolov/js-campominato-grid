@@ -9,7 +9,7 @@
 }
 
 .grid {
-    padding: 3rem 10rem 3rem 10rem ;
+    padding: 3rem 10rem 3rem 10rem;
     display: grid;
     grid-template-columns: repeat(9, 1fr);
     /*grid-gap: 1rem;*/
