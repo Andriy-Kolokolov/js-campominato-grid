@@ -1,10 +1,8 @@
-const eleGrid = document.querySelector(".grid");
-const selectDifficulty = document.getElementById("select-difficulty");
-
+const eleGrid = document.querySelector('.grid');
+const selectDifficulty = document.getElementById('select-difficulty');
 const btnPlay = document.getElementById('btn-play');
 
 btnPlay.addEventListener('click', function () {
-    // console.log(selectDifficulty.value)
     generateGrid(selectDifficulty.value);
 });
 
@@ -22,11 +20,19 @@ function generateGrid(difficulty) {
     }
 }
 
-function generateCells(gridSize) {
+function generateCells(nCells) {
     removeCells(eleGrid);
-    eleGrid.setAttribute("style", `grid-template-columns: repeat(${Math.sqrt(gridSize)}, 1fr);`)
-    for (let i = 0; i < gridSize; i++) {
-        eleGrid.innerHTML += `<div class="cell" style="background-color: #ee456e">${i + 1}</div>`;
+    eleGrid.setAttribute("style", `grid-template-columns: repeat(${Math.sqrt(nCells)}, 1fr);`)
+
+    for (let i = 0; i < nCells; i++) {
+        const eleCell = document.createElement('div');
+        eleCell.innerHTML = i + 1;
+        eleCell.classList.add('cell');
+        eleGrid.append(eleCell);
+        eleCell.addEventListener('click', function () {
+            this.classList.toggle('clicked');
+            console.log(this.innerHTML);
+        });
     }
 }
 
